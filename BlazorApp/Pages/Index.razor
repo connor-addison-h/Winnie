@@ -1,0 +1,43 @@
+@page "/"
+
+<h1>Home</h1>
+
+<p>This page displays a simple grid of data using an HTML table. You can replace the sample data with your own model or data source.</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in People)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td>@person.Age</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public int Age { get; set; }
+    }
+
+    private List<Person> People = new()
+    {
+        new Person { Id = 1, Name = "Alice", Age = 30 },
+        new Person { Id = 2, Name = "Bob", Age = 35 },
+        new Person { Id = 3, Name = "Charlie", Age = 28 },
+        new Person { Id = 4, Name = "Dana", Age = 42 },
+        new Person { Id = 5, Name = "Eli", Age = 24 }
+    };
+}
